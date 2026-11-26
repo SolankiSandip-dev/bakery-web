@@ -1,0 +1,219 @@
+*{
+    padding: 0;
+    margin: 0; 
+    box-sizing: border-box;
+}
+body {
+    background: #000000;
+    font-family: Arial, sans-serif;
+    color: azure;
+    background-image:linear-gradient(rgba(0, 0, 0, 0.711), rgba(0, 0, 0, 0.842)), url("img/backimg.jpg");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+   
+}
+
+.main{
+    padding-top: 0;
+}
+
+.header-row{
+    display: flex;
+    align-items: center;
+    gap:25px;
+}
+.topbar{
+    background-color: rgb(41, 41, 41);
+    color: rgb(255, 196, 58);
+    width: 80%;
+    height: 60px;
+    align-items: center;
+    text-align: center;
+    font-size: 50px;
+    
+    font-family:Transcity;
+    justify-content: center;
+    
+    border-radius: 30PX;
+    display: flex;
+}
+.corner-logo{
+    height: 150px;              /* Topbar ke hisaab se logo ki height */
+    width: 150px;
+    border-radius: 50%;        /* Gol shape dene ke liye */
+    object-fit: cover;
+    padding: auto;
+    transition: 0.5s;
+}
+.corner-logo:hover{
+
+    transform:  scale(1.03) ;
+    filter: drop-shadow(0 0 4px #ff7b00)
+            drop-shadow(0 0 4px #ff8400)
+            drop-shadow(0 0 4px #ff7300);
+             
+}
+
+
+
+/* Main Container */
+.main-container {
+    width: 95%;
+    height: 510px;
+    margin: 40px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+/* Left Image */
+.left-image {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.left-image img {
+    width: 85%;
+    height: 605px;
+    object-fit: contain;
+    /* Golden Glow */
+    filter: drop-shadow(0 0 5px #028725)
+            drop-shadow(0 0 15px #00ff33);
+    transition: 0.5s ease;
+}
+.left-image img:hover{
+    height:500px;
+    filter: drop-shadow(0 0 5px #c00070)
+            drop-shadow(0 0 15px #c00070);
+    
+}
+
+
+/* Login Box */
+.login-box {
+    width: 450px;
+    height: 550px;
+    min-height: 0;
+    padding: 25px 30px ;
+    box-sizing: border-box;
+    border: 3px solid rgba(255,255,255,0.5);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.051);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 15px #ffc43a,
+                0 0 30px #ffae00;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+   
+}
+
+.login-box h1 {
+    color: #d3cece;
+    font-size: 32px;
+}
+
+.login-box p {
+    color: #a0a0a0;
+}
+
+.login-box form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.login-box label {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.login-box input {
+    padding: 13px;
+    margin-top: 8px;
+    border: 1px solid #aaa;
+    border-radius: 8px;
+    outline: none;
+}
+
+.login-box button {
+    margin-top: 25px;
+    padding: 13px;
+    background: #9c9c9c;
+    color: rgb(255,196,58);
+    border: none;
+    border-radius: 8px;
+    font-size: 17px;
+    cursor: pointer;
+}
+.ll{
+    font-family:Transcity;
+    font-size: 20px;
+    transition: 0.5s;
+}
+.ll:hover{
+    filter: 
+            drop-shadow(0 0 5px #a600ff)
+            drop-shadow(0 0 5px #a600ff)
+            drop-shadow(0 0 5px #a600ff)
+            drop-shadow(0 0 5px #a600ff);
+    background-color: #000000;
+}
+
+
+.llb{
+    font-family:Transcity;
+    font-size: 20px;
+    transition: 0.5s;
+}
+.llb:hover{
+    color: #ff7b00;
+    filter: 
+            drop-shadow(0 0 5px #00ffcc)
+            drop-shadow(0 0 5px #00ffcc)
+            drop-shadow(0 0 5px #00ffcc);
+    background-color: #000000;
+}
+.LOGOS{
+    
+    justify-content: space-between;
+
+    display: flex;
+    align-items: center;
+    transition: 0.4s ;
+}
+
+.LOGOS i {
+    cursor: pointer;
+    font-size:30px;
+    transition: all 0.4s ease;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.LOGOS i:hover {
+    transform: translateY(-8px) scale(1.1);
+    background-color: #000000;
+    color: #00ffee;
+
+    filter: drop-shadow(0 0 5px #d400ff)
+            drop-shadow(0 0 5px #000000)
+            drop-shadow(0 0 5px #9d00ff);
+            
+}
+
+
+#error {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+}

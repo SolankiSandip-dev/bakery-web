@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brother's Bakers</title>
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="marquee-track">
+      <div class="marquee-content">
+        <span>* Get 1 brownie on order of 1000/- or above</span>
+        <span>* Free delivery on order above Rs. 500</span>
+        <span>* Get 1 brownie on order of 1000/- or above</span>
+        <span>* Free delivery on order above Rs. 500</span>
+      </div>
+      <!-- Seamless loop ke liye duplicate content -->
+      <div class="marquee-content" aria-hidden="true">
+        <span>* Get 1 brownie on order of 1000/- or above</span>
+        <span>* Free delivery on order above Rs. 500</span>
+        <span>* Get 1 brownie on order of 1000/- or above</span>
+        <span>* Free delivery on order above Rs. 500</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN NAVBAR / HEADER -->
+  <header class="navbar">
+    <!-- Left navigation links -->
+    <nav class="nav-links">
+      <a href="#">ABOUT US</a>
+      <div class="dropdown">
+        <a href="#" class="drop-btn">PRODUCT ▾</a>
+        <div class="dropdown-menu">
+          <a href="#cat-cakes">CAKES & SLICES</a>
+          <a href="#cat-puffs">PUFFS & ROLLS</a>
+          <a href="#cat-sweets">INDIAN SWEETS</a>
+          <a href="#cat-chocolates">CHOCOLATES</a>
+        </div>
+      </div>
+      <a href="#cat-healthy">HEALTHY</a>
+      <a href="#">CONTACT</a>
+    </nav>
+
+    <!-- Center Brand Logo -->
+    <div class="nav-logo">
+      <a href="#">
+        <span class="brand-main">BROTHER'S</span>
+        <span class="brand-sub">BAKERS</span>
+      </a>
+    </div>
+
+    <!-- Right: Location + Action Buttons -->
+    <div class="nav-actions">
+      <div class="location-box">
+        <span class="loc-icon"><i class="bi bi-geo-alt-fill"></i></span>
+        <div class="loc-text">
+          <small>Delivering To</small>
+          <strong>Set Location</strong>
+        </div>
+      </div>
+
+      <button class="icon-btn" title="Account"><i class="bi bi-person-circle"></i></button>
+      <button class="icon-btn" title="Search"><i class="bi bi-search"></i></button>
+      <button class="icon-btn" title="Wishlist" id="navbarWishlistBtn">
+        <i class="bi bi-bag-heart-fill"></i>
+        <span class="badge" id="wishlistBadge">0</span>
+      </button>
+      <button class="icon-btn" title="Cart" id="navbarCartBtn">
+        <i class="bi bi-cart-fill"></i>
+        <span class="badge" id="cartBadge">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO SLIDER SECTION -->
+  <section class="hero-slider">
+    <div class="slides-container" id="slidesContainer">
+
+      <!-- Slide 1: Breads & Buns -->
+      <div class="hero-slide active">
+        <div class="hero-text">
+          <span class="eyebrow">Fresh from the Oven</span>
+          <h1>EVERYDAY FRESHNESS,<br>PERFECTLY BAKED</h1>
+          <p>Soft, fluffy breads and buns baked daily to bring warmth and freshness to every meal.</p>
+          <a href="#allProductsSection" class="cta-btn">SHOP NOW</a>
+        </div>
+        <div class="hero-image">
+          <img src="img/hero1.jpeg" alt="Fresh Breads and Buns">
+        </div>
+      </div>
+
+      <!-- Slide 2: Cakes & Pastries -->
+      <div class="hero-slide">
+        <div class="hero-text">
+          <span class="eyebrow">Sweet Celebrations</span>
+          <h1>HANDCRAFTED CAKES &<br>RICH PASTRIES</h1>
+          <p>Layered with real cream, Belgian chocolate, and fresh fruits for every special moment.</p>
+          <a href="#cat-cakes" class="cta-btn">EXPLORE CAKES</a>
+        </div>
+        <div class="hero-image">
+          <img src="img/hero2.jpeg" alt="Chocolate Cake">
+        </div>
+      </div>
+
+      <!-- Slide 3: Cookies & Biscuits -->
+      <div class="hero-slide">
+        <div class="hero-text">
+          <span class="eyebrow">Tea-Time Classics</span>
+          <h1>CRISPY COOKIES &<br>BUTTERY BISCUITS</h1>
+          <p>Baked to golden perfection with pure butter, roasted nuts, and rich cocoa chunks.</p>
+          <a href="#cat-puffs" class="cta-btn">ORDER SNACKS</a>
+        </div>
+        <div class="hero-image">
+          <img src="img/hero3.jpeg" alt="Fresh Cookies">
+        </div>
+      </div>
+
+      <!-- Slide 4: Healthy Bakes -->
+      <div class="hero-slide">
+        <div class="hero-text">
+          <span class="eyebrow">Guilt-Free Indulgence</span>
+          <h1>WHOLESOME MULTIGRAIN &<br>HEALTHY BAKES</h1>
+          <p>High-fiber whole wheat, oats, and millet bakes crafted for your daily nutrition.</p>
+          <a href="#cat-healthy" class="cta-btn">SHOP HEALTHY</a>
+        </div>
+        <div class="hero-image">
+          <img src="img/hero4.jpeg" alt="Multigrain Bread">
+        </div>
+      </div>
+
+      <!-- Slide 5: Croissants & Puffs -->
+      <div class="hero-slide">
+        <div class="hero-text">
+          <span class="eyebrow">Flaky & Warm</span>
+          <h1>ARTISANAL CROISSANTS &<br>SAVORY PUFFS</h1>
+          <p>Delicate, flaky layers baked fresh every morning for your coffee break.</p>
+          <a href="#cat-puffs" class="cta-btn">VIEW MENU</a>
+        </div>
+        <div class="hero-image">
+          <img src="img/hero5.jpg" alt="Fresh Croissants">
+        </div>
+      </div>
+
+      <!-- Slide 6 (Duplicate of Slide 1 for smooth loop transition) -->
+      <div class="hero-slide clone-first">
+        <div class="hero-text" style="opacity: 0%;">
+          <span class="eyebrow">Fresh from the Oven</span>
+          <h1>EVERYDAY FRESHNESS,<br>PERFECTLY BAKED</h1>
+          <p>Soft, fluffy breads and buns baked daily to bring warmth and freshness to every meal.</p>
+          <a href="#allProductsSection" class="cta-btn">SHOP NOW</a>
+        </div>
+        <div class="hero-image">
+          <img src="img/hero1.jpeg" alt="Fresh Breads">
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Left / Right Arrows -->
+    <button class="slider-arrow prev" onclick="changeSlide(-1)">&#10094;</button>
+    <button class="slider-arrow next" onclick="changeSlide(1)">&#10095;</button>
+
+    <!-- Bottom Dots -->
+    <div class="slider-dots" id="sliderDots">
+      <span class="dot active" onclick="goToSlide(0)"></span>
+      <span class="dot" onclick="goToSlide(1)"></span>
+      <span class="dot" onclick="goToSlide(2)"></span>
+      <span class="dot" onclick="goToSlide(3)"></span>
+      <span class="dot" onclick="goToSlide(4)"></span>
+    </div>
+  </section>
+
+  <main class="below-hero">
+
+    <!-- SECTION 1: SHOP BY CATEGORIES -->
+    <section class="section-block categories-section" id="">
+      <div class="section-header">
+        <span class="section-eyebrow">Browse By Craving</span>
+        <h2>SHOP BY CATEGORIES</h2>
+      </div>
+
+      <div class="category-grid">
+        <a href="#cat-cakes" class="category-card" data-target="cat-cakes">
+          <img src="img/CHOCLATE TUFFULE.jpg" alt="Cakes and Slices">
+          <div class="category-info">
+            <h3>Cakes & Slices</h3>
+            <span>10 Varieties</span>
+          </div>
+        </a>
+
+        <a href="#cat-puffs" class="category-card" data-target="cat-puffs">
+          <img src="img/VEG puff.jpg" alt="Puffs and Rolls">
+          <div class="category-info">
+            <h3>Puffs & Rolls</h3>
+            <span>6 Varieties</span>
+          </div>
+        </a>
+
+        <a href="#cat-sweets" class="category-card" data-target="cat-sweets">
+          <img src="img/KAJU KATALI SWEET.jpg" alt="Indian Sweets">
+          <div class="category-info">
+            <h3>Indian Sweets</h3>
+            <span>5 Varieties</span>
+          </div>
+        </a>
+
+        <a href="#cat-chocolates" class="category-card" data-target="cat-chocolates">
+          <img src="img/SILK CHOKLET.jpg" alt="Chocolates">
+          <div class="category-info">
+            <h3>Chocolates</h3>
+            <span>6 Varieties</span>
+          </div>
+        </a>
+
+      <a href="#cat-healthy" class="category-card" data-target="cat-healthy">
+        <img src="img/HEALTHY DISS.jpg" alt="Healthy Food">
+        <div class="category-info">
+          <h3>Healthy Food</h3>
+          <span>4 Varieties</span>
+        </div>
+      </a> 
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: CATEGORY-WISE PRODUCTS -->
+    <section class="section-block products-section" id="allProductsSection">
+      <div class="section-header">
+        <span class="section-eyebrow">Fresh From Brother's Bakers</span>
+        <h2>EXPLORE OUR MENU</h2>
+      </div>
+
+      <!-- CATEGORY 1: CAKES & SLICES -->
+      <div class="category-group" id="cat-cakes">
+        <h3 class="category-group-title">Cakes & Slices</h3>
+        <div class="product-grid">
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/BLACK FOREST.jpg" alt="Black Forest Cake">
+            </div>
+            <div class="product-body">
+              <h3>Black Forest Cake</h3>
+              <p class="product-price">₹520.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/Blueberry.jpg" alt="Blueberry Cake">
+            </div>
+            <div class="product-body">
+              <h3>Blueberry Cake</h3>
+              <p class="product-price">₹580.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/Butterscotch.jpg" alt="Butterscotch Cake">
+            </div>
+            <div class="product-body">
+              <h3>Butterscotch Cake</h3>
+              <p class="product-price">₹490.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/CHOCLATE TUFFULE.jpg" alt="Chocolate Truffle Cake">
+            </div>
+            <div class="product-body">
+              <h3>Chocolate Truffle Cake</h3>
+              <p class="product-price">₹620.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/TIER CAKE.jpg" alt="Royal Tier Cake">
+            </div>
+            <div class="product-body">
+              <h3>Royal Tier Cake</h3>
+              <p class="product-price">₹1850.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/CAKE SLICE.jpg" alt="Chocolate Cherry Slice">
+            </div>
+            <div class="product-body">
+              <h3>Chocolate Cherry Slice</h3>
+              <p class="product-price">₹110.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/DARK CAKE SLICE.jpg" alt="Dark Chocolate Slice">
+            </div>
+            <div class="product-body">
+              <h3>Dark Chocolate Slice</h3>
+              <p class="product-price">₹125.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/MANGO CAKE SLICE.jpg" alt="Mango Cream Slice">
+            </div>
+            <div class="product-body">
+              <h3>Mango Cream Slice</h3>
+              <p class="product-price">₹115.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/STOBARY CAKE SLICE.jpg" alt="Strawberry Cake Slice">
+            </div>
+            <div class="product-body">
+              <h3>Strawberry Cake Slice</h3>
+              <p class="product-price">₹120.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/VANILLA CAKE SLICE.jpg" alt="Vanilla Cream Slice">
+            </div>
+            <div class="product-body">
+              <h3>Vanilla Cream Slice</h3>
+              <p class="product-price">₹95.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CATEGORY 2: PUFFS & ROLLS -->
+      <div class="category-group" id="cat-puffs">
+        <h3 class="category-group-title">Puffs & Rolls</h3>
+        <div class="product-grid">
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/VEG puff.jpg" alt="Veg Puff">
+            </div>
+            <div class="product-body">
+              <h3>Veg Puff</h3>
+              <p class="product-price">₹45.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/PANJABI PUFF.jpg" alt="Panjabi Puff">
+            </div>
+            <div class="product-body">
+              <h3>Panjabi Puff</h3>
+              <p class="product-price">₹55.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/PASTA PUFF.jpg" alt="Pasta Puff">
+            </div>
+            <div class="product-body">
+              <h3>Pasta Puff</h3>
+              <p class="product-price">₹65.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/MAGGI PUFF.jpg" alt="Maggi Puff">
+            </div>
+            <div class="product-body">
+              <h3>Maggi Puff</h3>
+              <p class="product-price">₹60.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/SEV SING PUFF.jpg" alt="Sev Sing Puff">
+            </div>
+            <div class="product-body">
+              <h3>Sev Sing Puff</h3>
+              <p class="product-price">₹50.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/ROOL.jpg" alt="Cinnamon Swirl Roll">
+            </div>
+            <div class="product-body">
+              <h3>Cinnamon Swirl Roll</h3>
+              <p class="product-price">₹90.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CATEGORY 3: INDIAN SWEETS -->
+      <div class="category-group" id="cat-sweets">
+        <h3 class="category-group-title">Indian Sweets</h3>
+        <div class="product-grid">
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/KAJU KATALI SWEET.jpg" alt="Kaju Katli">
+            </div>
+            <div class="product-body">
+              <h3>Kaju Katli</h3>
+              <p class="product-price">₹680.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/GOLABJAMUN SWEET.jpg" alt="Gulab Jamun">
+            </div>
+            <div class="product-body">
+              <h3>Gulab Jamun</h3>
+              <p class="product-price">₹240.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/JALEBI SWEET.jpg" alt="Kesariya Jalebi">
+            </div>
+            <div class="product-body">
+              <h3>Kesariya Jalebi</h3>
+              <p class="product-price">₹180.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/GAJAR KA HALWA SWEET.jpg" alt="Gajar Ka Halwa">
+            </div>
+            <div class="product-body">
+              <h3>Gajar Ka Halwa</h3>
+              <p class="product-price">₹320.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/MISHTHI DOI SWEET.jpg" alt="Mishti Doi">
+            </div>
+            <div class="product-body">
+              <h3>Mishti Doi</h3>
+              <p class="product-price">₹160.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CATEGORY 4: CHOCOLATES -->
+      <div class="category-group" id="cat-chocolates">
+        <h3 class="category-group-title">Chocolates</h3>
+        <div class="product-grid">
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/SILK CHOKLET.jpg" alt="Dairy Milk Silk">
+            </div>
+            <div class="product-body">
+              <h3>Dairy Milk Silk</h3>
+              <p class="product-price">₹95.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/DAIRY MILK CHOKLET.jpg" alt="Cadbury Dairy Milk">
+            </div>
+            <div class="product-body">
+              <h3>Cadbury Dairy Milk</h3>
+              <p class="product-price">₹80.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/KITKAT CHOCKLET.jpg" alt="KitKat Royal Gold">
+            </div>
+            <div class="product-body">
+              <h3>KitKat Royal Gold</h3>
+              <p class="product-price">₹120.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/SNICKERS CHOCKLET.jpg" alt="Snickers Chocolate">
+            </div>
+            <div class="product-body">
+              <h3>Snickers Chocolate</h3>
+              <p class="product-price">₹60.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/5STAR CHOCKLET.jpg" alt="5Star Chocolate">
+            </div>
+            <div class="product-body">
+              <h3>5Star Chocolate</h3>
+              <p class="product-price">₹40.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/NUSS GOLD CHOCKLET.jpg" alt="NussGold Hazelnut">
+            </div>
+            <div class="product-body">
+              <h3>NussGold Hazelnut</h3>
+              <p class="product-price">₹195.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CATEGORY 5: HEALTHY FOOD -->
+      <div class="category-group" id="cat-healthy">
+        <h3 class="category-group-title">Healthy Food</h3>
+        <div class="product-grid">
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/BURGUR.jpg" alt="Healthy Burger">
+            </div>
+            <div class="product-body">
+              <h3>Healthy Burger</h3>
+              <p class="product-price">₹130.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/PASTA.jpg" alt="Healthy Pasta">
+            </div>
+            <div class="product-body">
+              <h3>Healthy Pasta</h3>
+              <p class="product-price">₹160.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/PIZZA.jpg" alt="Healthy Pizza">
+            </div>
+            <div class="product-body">
+              <h3>Healthy Pizza</h3>
+              <p class="product-price">₹220.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/SANDWICH.jpg" alt="Healthy Sandwich">
+            </div>
+            <div class="product-body">
+              <h3>Healthy Sandwich</h3>
+              <p class="product-price">₹110.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/HEALTHY DISS.jpg" alt="Healthy Dish">
+            </div>
+            <div class="product-body">
+              <h3>Healthy Dish</h3>
+              <p class="product-price">₹180.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/Boiled pulses.jpg" alt="Boiled Pulses">
+            </div>
+            <div class="product-body">
+              <h3>Boiled Pulses</h3>
+              <p class="product-price">₹90.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/DRYFOOD.jpg" alt="Dry Food">
+            </div>
+            <div class="product-body">
+              <h3>Dry Food</h3>
+              <p class="product-price">₹350.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-box">
+              <img src="img/SPECIAL FOR GYM.jpg" alt="Special For Gym">
+            </div>
+            <div class="product-body">
+              <h3>Special For Gym</h3>
+              <p class="product-price">₹210.00</p>
+              <div class="product-actions">
+                <button type="button" class="add-cart-btn">ADD TO CART</button>
+                <button type="button" class="shop-now-btn">SHOP NOW</button>
+                <button type="button" class="wishlist-btn" title="Add to Wishlist">♡</button>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      
+
+    </section>
+
+  </main>
+
+  <!-- SEARCH OVERLAY + POPUP RESULTS -->
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search cakes, puffs, mithai, chocolates..." autocomplete="off">
+      <button type="button" id="searchSubmitBtn">SEARCH</button>
+      <button type="button" id="searchCloseBtn" title="Close">&times;</button>
+    </div>
+
+    <!-- Matching products ka popup card container -->
+    <div class="search-results-popup" id="searchResultsPopup"></div>
+  </div>
+
+  <!-- FULL SCREEN "NOT AVAILABLE" ALERT (2 SECONDS) -->
+  <div class="not-available-screen" id="notAvailableScreen">
+    <span>NOT AVAILABLE</span>
+  </div>
+
+  <!-- CART SIDE DRAWER -->
+  <div class="cart-backdrop" id="cartBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <h3>YOUR CART</h3>
+      <button type="button" id="closeCartBtn">&times;</button>
+    </div>
+    <div class="cart-items-list" id="cartItemsList">
+      <p class="empty-cart-msg">Your cart is currently empty.</p>
+    </div>
+    <div class="cart-drawer-footer">
+      <div class="cart-total-row">
+        <span>Total:</span>
+        <strong id="cartTotalPrice">₹0.00</strong>
+      </div>
+      <button type="button" class="checkout-btn">PROCEED TO CHECKOUT</button>
+    </div>
+  </aside>
+
+<!-- LOCATION & INTERACTIVE MAP MODAL -->
+<div class="bb-modal-backdrop" id="locationModal">
+  <div class="bb-modal-box bb-location-box">
+    <div class="bb-modal-header">
+      <h3>SELECT DELIVERY LOCATION</h3>
+      <button type="button" class="bb-close-btn" data-close="locationModal">&times;</button>
+    </div>
+    <div class="bb-location-body">
+      <div class="bb-loc-search-wrap">
+        <input type="text" id="locationSearchInput" placeholder="Area, street ya city likhein (e.g. Navrangpura, Satellite)..." autocomplete="off">
+        <div id="locationSuggestions" class="bb-loc-suggestions"></div>
+      </div>
+      <button type="button" id="useCurrentLocBtn" class="bb-btn-secondary">📍 Use Current Location</button>
+      <small style="color:#c7b8a5; font-size:12px;">Tip: Map par click karein ya pin ko mouse se drag karke exact location chunein.</small>
+      <div id="bbInteractiveMap" class="bb-map-box"></div>
+      <button type="button" id="confirmLocationBtn" class="bb-btn-primary">CONFIRM LOCATION</button>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ACCOUNT / PROFILE MODAL -->
+  <div class="bb-modal-backdrop" id="accountModal">
+    <div class="bb-modal-box">
+      <div class="bb-modal-header">
+        <h3>MY ACCOUNT</h3>
+        <button type="button" class="bb-close-btn" data-close="accountModal">&times;</button>
+      </div>
+      <p class="bb-modal-text">Brother's Bakers account login / profile details yahan manage karein.</p>
+      <input type="text" placeholder="Mobile number ya email" class="bb-input">
+      <button type="button" class="bb-btn-primary" data-close="accountModal">CONTINUE</button>
+    </div>
+  </div>
+
+  <!-- WISHLIST / BAG DRAWER -->
+  <div class="bb-modal-backdrop" id="wishlistModal">
+    <div class="bb-modal-box">
+      <div class="bb-modal-header">
+        <h3>SAVED / WISHLIST</h3>
+        <button type="button" class="bb-close-btn" data-close="wishlistModal">&times;</button>
+      </div>
+      <div class="bb-modal-text" id="wishlistStatusText">Abhi koi item wishlist mein save nahi hai.</div>
+      <button type="button" class="bb-btn-primary" data-close="wishlistModal">BROWSE MENU</button>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+ 
+<!-- SHOP NOW CHECKOUT MODAL -->
+<div class="bb-modal-backdrop" id="shopNowModal">
+  <div class="bb-modal-box">
+    <div class="bb-modal-header">
+      <h3>QUICK ORDER — SHOP NOW</h3>
+      <button type="button" class="bb-close-btn" data-close="shopNowModal">&times;</button>
+    </div>
+
+    <div id="shopNowItemSummary" style="color:#ffd28a; font-weight:700; margin-bottom:10px; font-size:14px;"></div>
+
+    <form id="shopNowForm" class="bb-checkout-form">
+      <input type="text" id="custName" class="bb-input" placeholder="Full Name" required>
+      <input type="tel" id="custMobile" class="bb-input" placeholder="Mobile Number" pattern="[0-9]{10}" required>
+      <input type="text" id="custAddress" class="bb-input" placeholder="Full Address" required>
+      <input type="text" id="custPincode" class="bb-input" placeholder="Pincode" pattern="[0-9]{6}" required>
+
+      <div style="color:#d6c7b2; font-size:13px; margin-top:2px;">Payment Type:</div>
+      <div class="bb-pay-options">
+        <label class="bb-pay-choice">
+          <input type="radio" name="payType" value="cash" checked>
+          <span>Cash</span>
+        </label>
+        <label class="bb-pay-choice">
+          <input type="radio" name="payType" value="online">
+          <span>Online</span>
+        </label>
+      </div>
+
+      <!-- Online select karne par Random QR Box -->
+      <div class="bb-qr-box" id="onlineQrBox">
+        <div style="color:#ffd28a; font-size:13px; font-weight:700;">Scan QR With Your Phone</div>
+        <img id="randomQrImg" src="" alt="Random Payment QR">
+        <div id="qrCodeLabel" style="color:#c7b8a5; font-size:12px;"></div>
+        <a id="phoneOkPageLink" href="#" target="_blank" class="bb-phone-ok-link">Open Phone Link</a>
+      </div>
+
+      <button type="submit" id="shopNowSubmitBtn" class="bb-btn-primary">PLACE ORDER</button>
+    </form>
+  </div>
+</div>
+
+<!-- FULL SCREEN ORDER SUBMITTED (SIRF TEXT, PLANE NAHI) -->
+<div class="bb-order-success-screen" id="orderSuccessScreen">
+  <div class="bb-order-submitted-text">YOUR ORDER SUBMITTED</div>
+</div>
+
+
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>
