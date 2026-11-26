@@ -10,7 +10,7 @@
 
 const _isPhoneOk = new URLSearchParams(location.search).has("order_ok");
 if (!_isPhoneOk && sessionStorage.getItem("loggedIn") !== "true") {
-  location.replace("login.html");
+  location.replace("index.html");
 }
 /*
 if (sessionStorage.getItem("loggedIn") !== "true") {
